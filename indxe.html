@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">ابتسامة برو - عيادة الأسنان الحديثة</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0ea5e9',
+                        medical: '#0284c7',
+                        darkBg: '#0f172a',
+                        cardDark: '#1e293b'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-darkBg dark:text-slate-100 transition-colors duration-300 pb-16 md:pb-0">
+
+    <!-- شريط التنقل العلوي -->
+    <header class="sticky top-0 z-40 bg-white/90 dark:bg-cardDark/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="bg-primary text-white p-2 rounded-xl text-lg shadow-md shadow-primary/30">
+                    <i class="fa-solid fa-tooth"></i>
+                </div>
+                <span id="brand-name" class="text-lg font-bold tracking-tight">ابتسامة برو</span>
+            </div>
+            
+            <!-- روابط الشاشات الكبيرة -->
+            <nav class="hidden md:flex items-center gap-6 font-medium text-sm">
+                <a href="#home" class="hover:text-primary transition" data-i18n="nav_home">الرئيسية</a>
+                <a href="#services" class="hover:text-primary transition" data-i18n="nav_services">الخدمات</a>
+                <a href="#gallery" class="hover:text-primary transition" data-i18n="nav_gallery">المعرض</a>
+                <a href="#booking" class="hover:text-primary transition" data-i18n="nav_booking">احجز موعد</a>
+            </nav>
+
+            <div class="flex items-center gap-2">
+                <button onclick="toggleLanguage()" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 transition text-xs font-semibold">
+                    <span id="lang-label">English</span> 🌐
+                </button>
+                <button onclick="toggleDarkMode()" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 transition text-amber-500 text-sm">
+                    <i id="theme-icon" class="fa-solid fa-moon"></i>
+                </button>
+                <button onclick="openAdminModal()" class="bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 px-3 py-2 rounded-xl text-xs font-medium shadow-md">
+                    <i class="fa-solid fa-lock ml-1"></i> <span data-i18n="admin_btn">الادمن</span>
+                </button>
+                <!-- زر قائمة الموبايل -->
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-xl bg-slate-100 dark:bg-slate-700 text-lg">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- قائمة الموبايل المنسدلة -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-cardDark border-b border-slate-200 dark:border-slate-700 px-4 py-4 space-y-3">
+            <a href="#home" onclick="toggleMobileMenu()" class="block font-medium hover:text-primary" data-i18n="nav_home">الرئيسية</a>
+            <a href="#services" onclick="toggleMobileMenu()" class="block font-medium hover:text-primary" data-i18n="nav_services">الخدمات</a>
+            <a href="#gallery" onclick="toggleMobileMenu()" class="block font-medium hover:text-primary" data-i18n="nav_gallery">المعرض</a>
+            <a href="#booking" onclick="toggleMobileMenu()" class="block font-medium hover:text-primary" data-i18n="nav_booking">احجز موعد</a>
+        </div>
+    </header>
+
+    <!-- القسم الرئيسي (Hero Section) -->
+    <section id="home" class="py-12 lg:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-8 items-center">
+            <div class="space-y-4 text-center lg:text-right">
+                <span class="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold" data-i18n="hero_badge">أفضل رعاية لأسنانك</span>
+                <h1 class="text-3xl lg:text-5xl font-extrabold tracking-tight leading-snug" data-i18n="hero_title">ابتسامة مشرقة تبدأ من هنا</h1>
+                <p class="text-slate-600 dark:text-slate-300 text-sm lg:text-base max-w-lg mx-auto lg:mx-0" data-i18n="hero_desc">نقدم أحدث تقنيات طب الأسنان بأيدي خبرة متخصصة لضمان حصولك على راحة تامة ونتيجة مثالية تدوم طويلاً.</p>
+                <div class="flex flex-wrap justify-center lg:justify-start gap-3 pt-2">
+                    <a href="#booking" class="bg-primary text-white px-6 py-3 rounded-xl text-sm font-semibold shadow-lg shadow-primary/30 hover:bg-medical transition" data-i18n="book_now">احجز موعد الآن</a>
+                    <a href="https://wa.me/" target="_blank" class="bg-emerald-500 text-white px-6 py-3 rounded-xl text-sm font-semibold shadow-lg shadow-emerald-500/30 hover:bg-emerald-600 transition">
+                        <i class="fa-brands fa-whatsapp ml-2"></i> واتساب
+                    </a>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="relative rounded-2xl overflow-hidden shadow-xl border-2 border-white dark:border-slate-800">
+                    <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=800" alt="Clinic" class="w-full h-[300px] lg:h-[380px] object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الخدمات -->
+    <section id="services" class="py-16 bg-slate-100 dark:bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-xl mx-auto mb-12">
+                <h2 class="text-2xl font-bold mb-2" data-i18n="services_title">خدماتنا الطبية</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="services_subtitle">نقدم باقة متكاملة من حلول تجميل وعلاج الأسنان بأعلى معايير الجودة.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white dark:bg-cardDark p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700">
+                    <div class="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2" data-i18n="serv_1_title">تبييض الأسنان</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-xs" data-i18n="serv_1_desc">أحدث تقنيات الليزر لتبييض الأسنان وإزالة التصبغات في جلسة واحدة.</p>
+                </div>
+                <div class="bg-white dark:bg-cardDark p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700">
+                    <div class="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-tooth"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2" data-i18n="serv_2_title">زراعة الأسنان</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-xs" data-i18n="serv_2_desc">تعويض الأسنان المفقودة بغرسات عالية الجودة تدوم مدى الحياة.</p>
+                </div>
+                <div class="bg-white dark:bg-cardDark p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700">
+                    <div class="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-face-smile"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2" data-i18n="serv_3_title">تقويم الأسنان</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-xs" data-i18n="serv_3_desc">حلول تقويم متطورة لتعديل اصطفاف الأسنان لجميع الأعمار.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم معرض الصور (Gallery) - تم تعديل الصورة الثالثة هنا وضبطها بالكامل -->
+    <section id="gallery" class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-xl mx-auto mb-12">
+                <h2 class="text-2xl font-bold mb-2" data-i18n="gallery_title">معرض العيادة</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="gallery_subtitle">جولة داخل أحدث أقسام العيادة وأجهزة التطهير والتعقيم.</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="rounded-2xl overflow-hidden shadow-md h-40">
+                    <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover hover:scale-105 transition duration-300" alt="Gallery">
+                </div>
+                <div class="rounded-2xl overflow-hidden shadow-md h-40">
+                    <img src="tnt.png" class="w-full h-full object-cover hover:scale-105 transition duration-300" alt="Gallery">
+                </div>
+                <!-- الصورة البديلة المضمونة والواضحة -->
+                <div class="rounded-2xl overflow-hidden shadow-md h-40">
+                    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover hover:scale-105 transition duration-300" alt="Gallery">
+                </div>
+                <div class="rounded-2xl overflow-hidden shadow-md h-40">
+                    <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover hover:scale-105 transition duration-300" alt="Gallery">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم حجز المواعيد -->
+    <section id="booking" class="py-16 bg-slate-100 dark:bg-slate-900/50">
+        <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-cardDark p-6 lg:p-10 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold mb-1" data-i18n="booking_title">احجز موعدك الآن</h2>
+                    <p class="text-slate-600 dark:text-slate-400 text-xs" data-i18n="booking_subtitle">املأ البيانات أدناه لتأكيد الحجز الفوري وتوجيهك للواتساب.</p>
+                </div>
+                <form id="bookingForm" onsubmit="handleBooking(event)" class="space-y-4 text-sm">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-medium mb-1" data-i18n="form_name">الاسم الكامل</label>
+                            <input type="text" id="patientName" required class="w-full px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 focus:ring-2 focus:ring-primary">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium mb-1" data-i18n="form_phone">رقم الهاتف</label>
+                            <input type="tel" id="patientPhone" required class="w-full px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 focus:ring-2 focus:ring-primary">
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-xs font-medium mb-1" data-i18n="form_service">اختر الخدمة</label>
+                            <select id="patientService" class="w-full px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 focus:ring-2 focus:ring-primary">
+                                <option value="تبييض الأسنان">تبييض الأسنان</option>
+                                <option value="زراعة الأسنان">زراعة الأسنان</option>
+                                <option value="تقويم الأسنان">تقويم الأسنان</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium mb-1" data-i18n="form_date">اليوم</label>
+                            <input type="date" id="patientDate" required class="w-full px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 focus:ring-2 focus:ring-primary">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium mb-1" data-i18n="form_time">الوقت</label>
+                            <input type="time" id="patientTime" required class="w-full px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 focus:ring-2 focus:ring-primary">
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full bg-primary text-white py-3 rounded-xl font-bold shadow-md shadow-primary/30 hover:bg-medical transition" data-i18n="form_submit">تأكيد حجز الموعد</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- شريط الموبايل الثابت السفلي -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white/95 dark:bg-cardDark/95 backdrop-blur-md border-t border-slate-200 dark:border-slate-700 p-2.5 md:hidden flex justify-around items-center z-40 shadow-lg">
+        <a href="tel:+201000000000" class="flex flex-col items-center text-[10px] font-semibold text-slate-600 dark:text-slate-300">
+            <i class="fa-solid fa-phone text-base text-primary mb-0.5"></i> <span data-i18n="mob_call">اتصل</span>
+        </a>
+        <a href="https://wa.me/" target="_blank" class="flex flex-col items-center text-[10px] font-semibold text-slate-600 dark:text-slate-300">
+            <i class="fa-brands fa-whatsapp text-base text-emerald-500 mb-0.5"></i> <span data-i18n="mob_whatsapp">واتساب</span>
+        </a>
+        <a href="#booking" class="flex flex-col items-center text-[10px] font-semibold text-slate-600 dark:text-slate-300">
+            <i class="fa-solid fa-calendar-check text-base text-primary mb-0.5"></i> <span data-i18n="mob_book">احجز</span>
+        </a>
+    </div>
+
+    <!-- نافذة تسجيل الدخول لوحة التحكم (كلمة المرور: 2212) -->
+    <div id="adminModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
+        <div class="bg-white dark:bg-cardDark max-w-sm w-full p-6 rounded-3xl shadow-2xl relative">
+            <button onclick="closeAdminModal()" class="absolute top-4 left-4 text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+            <div class="text-center mb-5">
+                <div class="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center text-xl mx-auto mb-3">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <h3 class="text-xl font-bold" data-i18n="modal_title">لوحة تحكم الطبيب</h3>
+                <p class="text-slate-500 text-xs mt-1" data-i18n="modal_sub">الرجاء إدخال كلمة المرور (2212)</p>
+            </div>
+            <form onsubmit="verifyAdmin(event)" class="space-y-3">
+                <input type="password" id="adminPasswordInput" placeholder="••••" required class="w-full px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-center tracking-widest text-lg focus:ring-2 focus:ring-primary">
+                <button type="submit" class="w-full bg-primary text-white py-3 rounded-xl font-bold shadow-md shadow-primary/30 hover:bg-medical transition text-sm" data-i18n="modal_btn">دخول</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- لوحة تحكم الدكتور -->
+    <div id="adminDashboard" class="fixed inset-0 bg-slate-100 dark:bg-darkBg hidden z-50 overflow-y-auto">
+        <header class="bg-white dark:bg-cardDark border-b border-slate-200 dark:border-slate-700 px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-gauge text-xl text-primary"></i>
+                <h1 class="text-lg font-bold" data-i18n="dash_title">لوحة تحكم العيادة</h1>
+            </div>
+            <button onclick="closeDashboard()" class="bg-rose-500/10 text-rose-500 px-3 py-1.5 rounded-xl text-xs font-semibold hover:bg-rose-500/20 transition">
+                <i class="fa-solid fa-right-from-bracket ml-1"></i> <span data-i18n="dash_logout">خروج</span>
+            </button>
+        </header>
+        <main class="max-w-6xl mx-auto px-4 py-8">
+            <div class="grid md:grid-cols-2 gap-4 mb-8">
+                <div class="bg-white dark:bg-cardDark p-5 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700">
+                    <p class="text-slate-500 text-xs mb-1" data-i18n="stat_total">إجمالي الطلبات والحجوزات</p>
+                    <h3 id="totalBookingsCount" class="text-2xl font-extrabold text-primary">0</h3>
+                </div>
+            </div>
+            <div class="bg-white dark:bg-cardDark rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+                <div class="p-5 border-b border-slate-200 dark:border-slate-700 flex justify-between items-center">
+                    <h3 class="text-base font-bold" data-i18n="dash_table_title">قائمة الحجوزات والطلبات المسبقة</h3>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-right text-xs">
+                        <thead class="bg-slate-50 dark:bg-slate-900/50 text-slate-400 uppercase">
+                            <tr>
+                                <th class="p-3" data-i18n="th_name">الاسم</th>
+                                <th class="p-3" data-i18n="th_phone">الهاتف</th>
+                                <th class="p-3" data-i18n="th_service">الخدمة</th>
+                                <th class="p-3" data-i18n="th_date">الموعد</th>
+                                <th class="p-3" data-i18n="th_status">الحالة</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bookingsTableBody" class="divide-y divide-slate-200 dark:divide-slate-700">
+                            <!-- يتم إدراج الحجوزات ديناميكياً -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- السكربت البرمجي -->
+    <script>
+        const translations = {
+            ar: {
+                nav_home: "الرئيسية", nav_services: "الخدمات", nav_gallery: "المعرض", nav_booking: "احجز موعد",
+                admin_btn: "الادمن", hero_badge: "أفضل رعاية لأسنانك", hero_title: "ابتسامة مشرقة تبدأ من هنا",
+                hero_desc: "نقدم أحدث تقنيات طب الأسنان بأيدي خبرة متخصصة لضمان حصولك على راحة تامة ونتيجة مثالية تدوم طويلاً.",
+                book_now: "احجز موعد الآن", services_title: "خدماتنا الطبية", services_subtitle: "نقدم باقة متكاملة من حلول تجميل وعلاج الأسنان بأعلى معايير الجودة.",
+                serv_1_title: "تبييض الأسنان", serv_1_desc: "أحدث تقنيات الليزر لتبييض الأسنان وإزالة التصبغات في جلسة واحدة.",
+                serv_2_title: "زراعة الأسنان", serv_2_desc: "تعويض الأسنان المفقودة بغرسات عالية الجودة تدوم مدى الحياة.",
+                serv_3_title: "تقويم الأسنان", serv_3_desc: "حلول تقويم متطورة لتعديل اصطفاف الأسنان لجميع الأعمار.",
+                gallery_title: "معرض العيادة", gallery_subtitle: "جولة داخل أحدث أقسام العيادة وأجهزة التطهير والتعقيم.",
+                booking_title: "احجز موعدك الآن", booking_subtitle: "املأ البيانات أدناه لتأكيد الحجز الفوري وتوجيهك للواتساب.",
+                form_name: "الاسم الكامل", form_phone: "رقم الهاتف", form_service: "اختر الخدمة", form_date: "اليوم",
+                form_time: "الوقت", form_submit: "تأكيد حجز الموعد", mob_call: "اتصل", mob_whatsapp: "واتساب", mob_book: "احجز",
+                modal_title: "لوحة تحكم الطبيب", modal_sub: "الرجاء إدخال كلمة المرور (2212)", modal_btn: "دخول",
+                dash_title: "لوحة تحكم العيادة", dash_logout: "خروج", stat_total: "إجمالي الطلبات والحجوزات",
+                dash_table_title: "قائمة الحجوزات والطلبات المسبقة", th_name: "الاسم", th_phone: "الهاتف", th_service: "الخدمة",
+                th_date: "الموعد", th_status: "الحالة", lang_btn: "English"
+            },
+            en: {
+                nav_home: "Home", nav_services: "Services", nav_gallery: "Gallery", nav_booking: "Book Now",
+                admin_btn: "Admin", hero_badge: "Best Dental Care", hero_title: "A Bright Smile Starts Here",
+                hero_desc: "We offer the latest dental technologies by expert hands to ensure your complete comfort.",
+                book_now: "Book Appointment", services_title: "Our Medical Services", services_subtitle: "Comprehensive dental care solutions.",
+                serv_1_title: "Teeth Whitening", serv_1_desc: "Latest laser teeth whitening techniques safely in one session.",
+                serv_2_title: "Dental Implants", serv_2_desc: "High-quality implants that last a lifetime.",
+                serv_3_title: "Orthodontics", serv_3_desc: "Advanced orthodontic solutions for all ages.",
+                gallery_title: "Clinic Gallery", gallery_subtitle: "A tour inside our modern clinic departments.",
+                booking_title: "Book Your Appointment", booking_subtitle: "Fill in the details for instant confirmation.",
+                form_name: "Full Name", form_phone: "Phone Number", form_service: "Select Service", form_date: "Date",
+                form_time: "Time", form_submit: "Confirm Appointment", mob_call: "Call", mob_whatsapp: "WhatsApp", mob_book: "Book",
+                modal_title: "Doctor Dashboard", modal_sub: "Please enter password (2212)", modal_btn: "Login",
+                dash_title: "Clinic Dashboard", dash_logout: "Logout", stat_total: "Total Bookings",
+                dash_table_title: "Upcoming Appointments & Requests", th_name: "Name", th_phone: "Phone", th_service: "Service",
+                th_date: "Date & Time", th_status: "Status", lang_btn: "العربية"
+            }
+        };
+
+        let currentLang = 'ar';
+
+        let defaultBookings = [
+            { name: "أحمد محمود", phone: "01012345678", service: "تبييض الأسنان", date: "2026-10-01", time: "10:00", status: "مؤكد (طلب مسبق)" },
+            { name: "سارة محمد", phone: "01198765432", service: "زراعة الأسنان", date: "2026-10-02", time: "12:30", status: "مؤكد (طلب مسبق)" },
+            { name: "محمود حسن", phone: "01233344455", service: "تقويم الأسنان", date: "2026-10-03", time: "16:00", status: "معلق" }
+        ];
+
+        let bookings = JSON.parse(localStorage.getItem('clinic_bookings')) || defaultBookings;
+        if (!localStorage.getItem('clinic_bookings')) {
+            localStorage.setItem('clinic_bookings', JSON.stringify(bookings));
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            const html = document.documentElement;
+            html.setAttribute('lang', currentLang);
+            html.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+            document.getElementById('lang-label').innerText = currentLang === 'ar' ? 'English' : 'العربية';
+            
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.innerText = translations[currentLang][key];
+                }
+            });
+        }
+
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            html.classList.toggle('dark');
+            const icon = document.getElementById('theme-icon');
+            icon.className = html.classList.contains('dark') ? "fa-solid fa-sun" : "fa-solid fa-moon";
+        }
+
+        function handleBooking(e) {
+            e.preventDefault();
+            const name = document.getElementById('patientName').value;
+            const phone = document.getElementById('patientPhone').value;
+            const service = document.getElementById('patientService').value;
+            const date = document.getElementById('patientDate').value;
+            const time = document.getElementById('patientTime').value;
+
+            const isConflict = bookings.some(b => b.date === date && b.time === time);
+            if(isConflict) {
+                alert(currentLang === 'ar' ? 'عذراً، هذا الموعد محجوز مسبقاً.' : 'Sorry, this time slot is already booked.');
+                return;
+            }
+
+            const newBooking = { name, phone, service, date, time, status: currentLang === 'ar' ? 'مؤكد' : 'Confirmed' };
+            bookings.unshift(newBooking);
+            localStorage.setItem('clinic_bookings', JSON.stringify(bookings));
+
+            alert(currentLang === 'ar' ? 'تم الحجز بنجاح!' : 'Booking successful!');
+            const whatsappMsg = `مرحباً، أرغب بتأكيد حجز موعدي باسم ${name} للخدمة ${service} في تاريخ ${date} الساعة ${time}`;
+            window.open(`https://wa.me/?text=${encodeURIComponent(whatsappMsg)}`, '_blank');
+            document.getElementById('bookingForm').reset();
+        }
+
+        function openAdminModal() { document.getElementById('adminModal').classList.remove('hidden'); document.getElementById('adminModal').classList.add('flex'); }
+        function closeAdminModal() { document.getElementById('adminModal').classList.add('hidden'); document.getElementById('adminModal').classList.remove('flex'); }
+
+        function verifyAdmin(e) {
+            e.preventDefault();
+            const pass = document.getElementById('adminPasswordInput').value;
+            if(pass === '2212') {
+                closeAdminModal();
+                document.getElementById('adminPasswordInput').value = '';
+                openDashboard();
+            } else {
+                alert(currentLang === 'ar' ? 'كلمة المرور غير صحيحة (2212)!' : 'Incorrect password (2212)!');
+            }
+        }
+
+        function openDashboard() {
+            document.getElementById('adminDashboard').classList.remove('hidden');
+            document.getElementById('totalBookingsCount').innerText = bookings.length;
+            const tbody = document.getElementById('bookingsTableBody');
+            tbody.innerHTML = '';
+            bookings.forEach(b => {
+                tbody.innerHTML += `
+                    <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                        <td class="p-3 font-medium">${b.name}</td>
+                        <td class="p-3">${b.phone}</td>
+                        <td class="p-3">${b.service}</td>
+                        <td class="p-3">${b.date} - ${b.time}</td>
+                        <td class="p-3"><span class="bg-emerald-500/10 text-emerald-500 px-2.5 py-0.5 rounded-full font-bold">${b.status}</span></td>
+                    </tr>
+                `;
+            });
+        }
+
+        function closeDashboard() {
+            document.getElementById('adminDashboard').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
